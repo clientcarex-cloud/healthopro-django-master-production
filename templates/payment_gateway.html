@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/>
+        <title>Paytm Integration</title>
+
+        <script>
+            function onScriptLoad(){
+            var config = {
+            "root": "",
+            "flow": "DEFAULT",
+            "data": {
+            "orderId": "{{orderId}}", /* update order id */
+            "token": "{{txnToken}}", /* update token value */
+            "tokenType": "TXN_TOKEN",
+            "amount": "{{amount}}" /* update amount */
+            },
+            "handler": {
+            "notifyMerchant": function(eventName,data){
+            console.log("notifyMerchant handler function called");
+            console.log("eventName => ",eventName);
+            console.log("data => ",data);
+            }
+            }
+            };
+            if(window.Paytm && window.Paytm.CheckoutJS){
+            window.Paytm.CheckoutJS.onLoad(function excecuteAfterCompleteLoad() {
+            // initialze configuration using init method
+            window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
+            // after successfully updating configuration, invoke JS Checkout
+            window.Paytm.CheckoutJS.invoke();
+            }).catch(function onError(error){
+            console.log("error => ",error);
+            });
+            });
+            }
+            }
+        </script>
+        <script type="application/javascript" src="{{HOST}}/merchantpgpui/checkoutjs/merchants/{{MID}}.js" onload="onScriptLoad();" crossorigin="anonymous"></script>
+    </head>
+    <body>
+    </body>
+</html>
+
+
+

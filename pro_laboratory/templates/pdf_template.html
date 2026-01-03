@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Content Preview</title>
+    <script>
+        // Vanilla JavaScript to ensure the page is fully loaded
+        window.addEventListener('load', function() {
+            // Automatically trigger the print dialog
+            window.print();
+
+            // Close the window after printing. Uncomment the below line if you want the window to close automatically after printing.
+            // window.close();
+        });
+    </script>
+</head>
+<body>
+    <!-- Display the content that needs to be printed -->
+    <div>{{ content|safe }}</div>
+
+</body>
+</html>
