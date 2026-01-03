@@ -97,7 +97,7 @@ from pro_laboratory.views.labtechnicians_views import (LabTechniciansViewSet, La
                                                        LabPatientTestReportGenerationViewset,
                                                        SendTestReportInWhatsappView, PreviousVisitReportsAPIView
                                                        )
-from pro_laboratory.views.managePayments_views import ManagePaymentListView
+from pro_laboratory.views.managePayments_views import ManagePaymentListView, DeletePatientFinanceAPIView
 from pro_laboratory.views.user_permissions_views import UserPermissionsAccessViewset
 from pro_universal_data.views import PrintTemplateTypeViewset
 
@@ -297,6 +297,9 @@ urlpatterns = [
     path('lab_staff_page_guard/', LabStaffPageGuardView.as_view(), name='lab_staff_page_guard'),
 
     path('manage_payments/', ManagePaymentListView.as_view(), name='manage_payments'),
+    path('delete_patient_finance/', ManagePaymentListView.as_view(), name='delete_patient_finance'),
+    path('delete_records/', DeletePatientFinanceAPIView.as_view(), name='delete_records'), # Added
+
     path('lab_phlebotomists_list/', LabPhlebotomistListView.as_view(), name='lab_phlebotomists'),
     path('lab_technicians_list/', LabTechniciansListView.as_view(), name='lab_technicians_list'),
     path('lab_nabl/', LabNablReportListView.as_view(), name='lab_nabl'),
